@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Murus API Interface</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .container { max-width: 600px; margin: auto; }
+        h1 { text-align: center; }
+        form { margin-bottom: 30px; }
+        label { display: block; margin-top: 10px; }
+        input, textarea { width: 100%; padding: 8px; margin-top: 5px; }
+        button { padding: 10px 15px; margin-top: 15px; }
+        .response { background-color: #f4f4f4; padding: 15px; border-radius: 5px; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Murus API Interface</h1>
+        
+        <h2>Generate JWT Token</h2>
+        <form action="{{ url_for('generate_token') }}" method="post">
+            <label for="user_id">User ID:</label>
+            <input type="text" id="user_id" name="user_id" required>
+            
+            <label for="additional_claims">Additional Claims (JSON format):</label>
+            <textarea id="additional_claims" name="additional_claims">{"role": "admin"}</textarea>
+            
+            <button type="submit">Generate Token</button>
+        </form>
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            {% for category, message in messages %}
+              <div class="{{ category }}">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+        
+        <h2>Access Protected Endpoint</h2>
+        <form action="{{ url_for('protected_page') }}" method="get">
+            <label for="token">JWT Token:</label>
+            <input type="text" id="token" name="token" required>
+            
+            <button type="submit">Access Protected Route</button>
+        </form>
+    </div>
+</body>
+</html>

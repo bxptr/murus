@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate JWT Token</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .container { max-width: 600px; margin: auto; }
+        h1 { text-align: center; }
+        .response { background-color: #f4f4f4; padding: 15px; border-radius: 5px; word-wrap: break-word; }
+        a { display: block; margin-top: 20px; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>JWT Token Generated</h1>
+        <div class="response">
+            <strong>Your JWT Token:</strong>
+            <p>{{ token }}</p>
+        </div>
+        <a href="{{ url_for('index') }}">Back to Home</a>
+    </div>
+</body>
+</html>

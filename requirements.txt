@@ -1,0 +1,8 @@
+flask
+requests
+pyjwt
+flask-limiter
+werkzeug
+
+pyopenssl
+cryptography
